@@ -20,11 +20,11 @@
   
   /* Type scale */
   --text-sm: 13px;
-  --text-base: 15px;
-  --text-lg: 18px;
-  --text-xl: 22px;
-  --text-2xl: 28px;
-  --text-3xl: 36px;
+  --text-base: 16px;
+  --text-lg: 20px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+  --text-3xl: 42px;
   
   /* Spacing */
   --space-xs: 4px;
@@ -182,6 +182,57 @@ nav {
   font-style: italic;
   margin: var(--space-lg) 0;
   font-weight: 500;
+}
+
+/* Homepage: a generous, editorial-scale introduction */
+.home main {
+  display: grid;
+}
+
+.home .hero {
+  width: min(100%, 1200px);
+  min-height: calc(100svh - 170px);
+  margin: 0 auto;
+  padding: clamp(5rem, 12vh, 9rem) clamp(1.5rem, 5vw, 4rem);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+}
+
+.home .hero h1 {
+  max-width: 1000px;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.home .hero-subtitle {
+  max-width: 780px;
+  margin-bottom: clamp(1.75rem, 4vw, 3rem);
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  line-height: 1.45;
+}
+
+.home .hero-target {
+  max-width: 720px;
+  margin: 0;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.6;
+}
+
+.home .button-group {
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+.home .btn {
+  padding: 1rem clamp(1.5rem, 3vw, 2.25rem);
+  font-size: 1rem;
+}
+
+.home footer {
+  margin-top: 0;
 }
 
 /* CTA Buttons */
@@ -407,6 +458,20 @@ footer p {
   
   .hero h1 {
     font-size: var(--text-2xl);
+  }
+
+  .home .hero {
+    min-height: auto;
+    padding-top: clamp(4rem, 16vw, 6rem);
+    padding-bottom: clamp(4rem, 16vw, 6rem);
+  }
+
+  .home .hero h1 {
+    font-size: clamp(2.75rem, 14vw, 4.5rem);
+  }
+
+  .home .hero-subtitle br {
+    display: none;
   }
   
   section {
