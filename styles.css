@@ -202,9 +202,9 @@ nav {
 .home .hero h1 {
   max-width: 1000px;
   margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
-  font-size: clamp(3.5rem, 8vw, 7rem);
-  line-height: 0.98;
-  letter-spacing: -0.055em;
+  font-size: clamp(3rem, 6vw, 5.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
 }
 
 .home .hero-subtitle {
@@ -219,6 +219,26 @@ nav {
   margin: 0;
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   line-height: 1.6;
+}
+
+.home .hero-context {
+  max-width: 720px;
+  margin: clamp(1.75rem, 4vw, 3rem) 0 0;
+  font-size: clamp(1rem, 1.35vw, 1.125rem);
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.home .hero-context a {
+  color: var(--secondary);
+  font-weight: 600;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  transition: color 0.2s ease;
+}
+
+.home .hero-context a:hover {
+  color: var(--primary);
 }
 
 .home .button-group {
@@ -467,7 +487,7 @@ footer p {
   }
 
   .home .hero h1 {
-    font-size: clamp(2.75rem, 14vw, 4.5rem);
+    font-size: clamp(2.75rem, 12vw, 4rem);
   }
 
   .home .hero-subtitle br {
