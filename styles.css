@@ -360,10 +360,6 @@ section p {
   margin-bottom: 22px;
 }
 
-.about .container > p {
-  max-width: 72ch;
-}
-
 .about .container > h2 {
   margin-top: 56px;
 }
@@ -386,6 +382,13 @@ section p {
 }
 
 @media (min-width: 900px) {
+  .about .container > p,
+  .about .container > h1,
+  .about .container > h2:first-of-type {
+    width: 75%;
+    margin-inline: auto;
+  }
+
   .about-principles {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-xl);
