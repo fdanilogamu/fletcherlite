@@ -793,9 +793,10 @@ footer p a:focus-visible {
   stroke-dasharray: 7 3 1 3;
 }
 
-.map-paths .map-connection--record { stroke-dasharray: 2 3; }
+.map-paths .map-connection--records { stroke-dasharray: 2 3; }
 .map-paths .map-connection--orientation { stroke-dasharray: 8 4; }
 .map-paths .map-connection--governance { stroke-dasharray: 1 3; stroke-width: 1.6; }
+.map-paths .map-iteration-path { stroke: var(--accent); stroke-width: 1.3; stroke-dasharray: 3 4; }
 
 .map-junctions circle {
   fill: var(--bg-primary);

@@ -85,7 +85,7 @@
       stages,
       paragraphs: [
         'Systemic Thinking runs through the practice, but takes a different form at each stage. Select a stage in the map to see how it appears there.',
-        'It means moving between individual artifacts and the wider environment; connecting observations into patterns and underlying problems; considering how interventions affect other parts of a system; surfacing dependencies and missing relationships; testing coherence; and preserving the relationship between findings, the larger problem, and a response.'
+        'Investigate moves between artifacts, observations, and the wider environment. Recognize connects observations into patterns and underlying problems. Design considers how an intervention affects other parts of the system. Question surfaces dependencies, assumptions, missing relationships, and consequences. Evaluate tests whether the parts form a coherent whole. Communicate preserves the links between findings, the larger problem, and a response.'
       ]
     },
     'new-eyes': {
