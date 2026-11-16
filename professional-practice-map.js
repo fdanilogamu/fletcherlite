@@ -8,92 +8,13 @@
   const junctionLayer = root.querySelector('[data-map-junctions]');
   const buttons = [...root.querySelectorAll('[data-select]')];
   const stages = ['investigate', 'recognize', 'design', 'question', 'evaluate', 'communicate'];
-  const stageLabels = {
-    investigate: 'Investigate', recognize: 'Recognize', design: 'Design',
-    question: 'Question', evaluate: 'Evaluate', communicate: 'Communicate'
-  };
-  const stageDetails = {
-    investigate: {
-      eyebrow: 'Stage 01 · Central narrative', title: 'Investigate',
-      paragraphs: [
-        'I start with the material and environment that already exist before looking at individual documents and their context. With that, I decide what needs a closer look, and what I find always has the potential to change how I understand the problem itself.'
-      ]
-    },
-    recognize: {
-      eyebrow: 'Stage 02 · Central narrative', title: 'Recognize',
-      paragraphs: [
-        'I use pattern recognition to connect individual observations and see how they connect. Those connections are opportunities to dig into the evidence for confirmation.'
-      ]
-    },
-    design: {
-      eyebrow: 'Stage 03 · Central narrative', title: 'Design',
-      paragraphs: [
-        "I shape a response around the problem and what could happen if it's not addressed. I distinguish requirements that address meaningful failures from recommendations, which improve the work without being essential to its function."
-      ]
-    },
-    question: {
-      eyebrow: 'Stage 04 · Central narrative', title: 'Question',
-      paragraphs: [
-        "I follow questions that expose what's still unclear or undecided. For example, a missing connection in the material can point to a necessary investigation."
-      ]
-    },
-    evaluate: {
-      eyebrow: 'Stage 05 · Central narrative', title: 'Evaluate',
-      paragraphs: [
-        'I consider whether the evidence, the explanation, and the response are cohesive. I look for missing dependencies and unsupported claims, and I ask myself if I believe a conclusion, and can defend it from my expertise as well.'
-      ]
-    },
-    communicate: {
-      eyebrow: 'Stage 06 · Central narrative', title: 'Communicate',
-      paragraphs: [
-        'I bring the evidence, the problem that it points to, and the proposed response into synthesis. Different people may need different ways into the same work, and I address that directly. However in all presentations, it should remain understandable.'
-      ]
-    }
-  };
-
   const anchors = {
-    ai: {
-      title: 'AI involvement', eyebrow: 'Working relationship · Supporting capability',
-      stages: ['recognize', 'design', 'question', 'evaluate', 'communicate'],
-      paragraphs: [
-        'I use AI to help question, find patterns, shape language, and create resources. How much it contributes changes on a case by case basis, and I remain responsible for deciding what I accept and what I can stand behind.'
-      ]
-    },
-    records: {
-      title: 'Record-keeping', eyebrow: 'Ongoing practice',
-      stages: ['investigate', 'recognize', 'evaluate', 'communicate'],
-      paragraphs: [
-        "I keep track of observations and their sources as the work develops. Regular logs and periodic reviews help me see both what I've been doing as well as analyze the larger patterns across that work."
-      ]
-    },
-    systemic: {
-      title: 'Systemic Thinking', eyebrow: 'Cross-cutting way of understanding',
-      stages,
-      paragraphs: [
-        'I move between details and the bigger picture. That means I connect observations to underlying problems, and consider how a response may affect other parts of the larger system.'
-      ]
-    },
-    'new-eyes': {
-      title: 'Prepare for New Eyes', eyebrow: 'Audience orientation',
-      stages: ['design', 'communicate'],
-      paragraphs: [
-        "I consider how someone unfamiliar with the material will encounter it. Making guidance easier to approach doesn't weaken the requirements."
-      ]
-    },
-    governance: {
-      title: 'Governance and risk', eyebrow: 'Decision considerations',
-      stages: ['design', 'question', 'evaluate', 'communicate'],
-      paragraphs: [
-        'I consider who needs to own or approve decisions, what risks a requirement addresses, and what could happen if an issue is left unresolved. These questions shape how I design, question, evaluate, and explain a response.'
-      ]
-    },
-    fletcher: {
-      title: "Fletcher's role", eyebrow: 'Professional agency · Encompasses the whole system',
-      stages,
-      paragraphs: [
-        'My experience and judgment connect everything on this map. They help me interpret what I find, decide what it means, and take responsibility for the conclusions and recommendations.'
-      ]
-    }
+    ai: { stages: ['recognize', 'design', 'question', 'evaluate', 'communicate'] },
+    fletcher: { stages },
+    records: { stages: ['investigate', 'recognize', 'evaluate', 'communicate'] },
+    systemic: { stages },
+    'new-eyes': { stages: ['design', 'communicate'] },
+    governance: { stages: ['design', 'question', 'evaluate', 'communicate'] }
   };
 
   const stageToAnchors = Object.fromEntries(stages.map((stage) => [stage, []]));
@@ -107,7 +28,10 @@
   const popupTitle = root.querySelector('[data-popup-title]');
   const popupCopy = root.querySelector('[data-popup-copy]');
   const popupClose = root.querySelector('[data-popup-close]');
+  const popupEntryLink = root.querySelector('[data-popup-entry-link]');
   const resetButton = root.querySelector('[data-map-reset]');
+  const explained = document.querySelector('.map-explained details');
+  const explainedContent = document.querySelector('.map-explained-content');
   let activeSelection = null;
   let activeTrigger = null;
 
@@ -133,20 +57,44 @@
   };
 
   const setPopup = (item) => {
-    const detail = stageDetails[item] || anchors[item];
-    if (!detail) {
+    const heading = document.getElementById(item);
+    const entry = heading?.closest('[data-map-entry]');
+    const description = entry?.querySelector('[data-module-description]');
+    if (!entry || !description) {
       popup.hidden = true;
       return;
     }
-    popupEyebrow.textContent = detail.eyebrow;
-    popupTitle.textContent = detail.title;
-    popupCopy.replaceChildren(...detail.paragraphs.map((paragraph) => {
-      const p = document.createElement('p');
-      p.textContent = paragraph;
-      return p;
-    }));
+    popupEyebrow.textContent = entry.dataset.mapEyebrow;
+    popupTitle.textContent = heading.textContent;
+    popupCopy.replaceChildren(description.cloneNode(true));
+    popupEntryLink.href = `#${heading.id}`;
     popup.hidden = false;
     positionPopup();
+  };
+
+  const closePopup = ({ returnFocus = false } = {}) => {
+    const trigger = activeTrigger;
+    popup.hidden = true;
+    activeTrigger = null;
+    buttons.forEach((button) => button.setAttribute('aria-expanded', 'false'));
+    if (returnFocus) trigger?.focus();
+  };
+
+  const scrollToEntry = (id, { updateHistory = true, focus = true } = {}) => {
+    const heading = document.getElementById(id);
+    if (!heading || !heading.closest('[data-map-entry]')) return;
+    explained.open = true;
+    if (updateHistory) history.pushState(null, '', `#${heading.id}`);
+    requestAnimationFrame(() => {
+      heading.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+      if (focus) heading.focus({ preventScroll: true });
+    });
+  };
+
+  const scrollToMap = () => {
+    explained.open = false;
+    history.pushState(null, '', '#practice-map');
+    root.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   };
 
   const drawDiagram = () => {
