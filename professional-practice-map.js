@@ -16,49 +16,37 @@
     investigate: {
       eyebrow: 'Stage 01 · Central narrative', title: 'Investigate',
       paragraphs: [
-        'I examine available material and its context. Inventories, source references, repository information, usage, and update indicators can help me decide what deserves closer attention. I may inspect a representative sample in depth, looking at references, links and images, sequence, repository fit, formatting, and procedural completeness.',
-        'My judgment matters in deciding what to inspect, how deeply, and what evidence is relevant. Comparison material can provide context without automatically serving as a benchmark.',
-        'For example, a procedure that appears complete at first may reveal missing prerequisites or implicit steps on closer reading.'
+        'I start with the material and environment that already exist before looking at individual documents and their context. With that, I decide what needs a closer look, and what I find always has the potential to change how I understand the problem itself.'
       ]
     },
     recognize: {
       eyebrow: 'Stage 02 · Central narrative', title: 'Recognize',
       paragraphs: [
-        'I distinguish isolated defects from recurring issues and move between artifact-level observations and broader explanations. An interpretation is a hypothesis: evidence can change it, and a plausible explanation still needs to be examined.',
-        'My judgment matters in deciding whether observations share an underlying cause and whether that explanation is supported. AI can assist with pattern extraction and problem articulation; it does not settle the conclusion.',
-        'Several different gaps may point to a common problem, but the pattern needs checking against source material.'
+        'I use pattern recognition to connect individual observations and see how they connect. Those connections are opportunities to dig into the evidence for confirmation.'
       ]
     },
     design: {
       eyebrow: 'Stage 03 · Central narrative', title: 'Design',
       paragraphs: [
-        'I consider whether an established practice addresses the issue, what can be adapted, or whether a different standard is needed. I weigh consequences for human comprehension, AI ingestion and retrieval, and operational reliability.',
-        'Requirements address failures that materially compromise function, reliability, or usability; recommendations offer meaningful improvements without making their absence a fundamental failure.',
-        'My judgment matters in weighing consequences, deciding what is essential, and preserving useful foundations when scope changes. AI can help explore possible approaches, while I remain accountable for the intervention.'
+        "I shape a response around the problem and what could happen if it's not addressed. I distinguish requirements that address meaningful failures from recommendations, which improve the work without being essential to its function."
       ]
     },
     question: {
       eyebrow: 'Stage 04 · Central narrative', title: 'Question',
       paragraphs: [
-        'Iterative questioning can surface decisions not yet formalized, such as ownership, approval conditions, timelines, or lifecycle handling. Reading can also expose a missing connection: I identify the question that would bridge it and determine whether I can answer it from my expertise or need further knowledge or assistance.',
-        'My judgment matters in deciding which questions affect the system, what can responsibly be resolved, and what remains unsupported. This stage can change earlier understanding and redirect design.',
-        'If a description depends on an unstated approval condition, identifying that missing decision may change what the material needs to explain.'
+        "I follow questions that expose what's still unclear or undecided. For example, a missing connection in the material can point to a necessary investigation."
       ]
     },
     evaluate: {
       eyebrow: 'Stage 05 · Central narrative', title: 'Evaluate',
       paragraphs: [
-        'I check whether evidence supports the interpretation, requirements reflect functional consequences, and explanations include necessary dependencies. I use comprehension as a diagnostic: a disrupted sequence or missing connection may signal an information or structural gap.',
-        'Substantive assertions must pass two professional tests: I believe them from my expertise, and I can defend them from my expertise. I also review my work over time to see patterns and progress at a broader level.',
-        'My judgment matters in deciding what is coherent and defensible, and what needs more investigation, revision, or removal. Evaluation is not just checking whether an activity is finished.'
+        'I consider whether the evidence, the explanation, and the response are cohesive. I look for missing dependencies and unsupported claims, and I ask myself if I believe a conclusion, and can defend it from my expertise as well.'
       ]
     },
     communicate: {
       eyebrow: 'Stage 06 · Central narrative', title: 'Communicate',
       paragraphs: [
-        'I connect investigation, findings, underlying problems, proposed interventions, and the reasons they matter. Different audiences may need different representations of the same work: authoritative technical material and decision-oriented explanation serve different purposes.',
-        'My judgment matters in choosing what an audience needs to understand without losing the connection to evidence. AI can assist with language, production, simpler representations, and executive-facing presentations while professional ownership remains mine.',
-        'A body of technical material may need a simpler audience-facing explanation that preserves the rationale behind the response.'
+        'I bring the evidence, the problem that it points to, and the proposed response into synthesis. Different people may need different ways into the same work, and I address that directly. However in all presentations, it should remain understandable.'
       ]
     }
   };
@@ -68,48 +56,42 @@
       title: 'AI involvement', eyebrow: 'Working relationship · Supporting capability',
       stages: ['recognize', 'design', 'question', 'evaluate', 'communicate'],
       paragraphs: [
-        'AI can assist with pattern extraction, problem articulation, questioning, exploring possible approaches, language refinement, production, simpler representations, and executive-facing presentations.',
-        'Its contribution varies by activity: substantial in Design and Question, supporting in Recognize, Evaluate, and Communicate. Its output remains subject to professional review. Plausibility alone is not grounds for endorsement.'
+        'I use AI to help question, find patterns, shape language, and create resources. How much it contributes changes on a case by case basis, and I remain responsible for deciding what I accept and what I can stand behind.'
       ]
     },
     records: {
       title: 'Record-keeping', eyebrow: 'Ongoing practice',
       stages: ['investigate', 'recognize', 'evaluate', 'communicate'],
       paragraphs: [
-        'I record observations and source information as work progresses, maintain a continuous daily log, and periodically review or aggregate those records.',
-        'This keeps specific activities visible while helping me understand patterns and direction across the broader body of work. Source references also support an evidence trail connecting investigation to findings and communication.'
+        "I keep track of observations and their sources as the work develops. Regular logs and periodic reviews help me see both what I've been doing as well as analyze the larger patterns across that work."
       ]
     },
     systemic: {
       title: 'Systemic Thinking', eyebrow: 'Cross-cutting way of understanding',
       stages,
       paragraphs: [
-        'Systemic Thinking runs through the practice, but takes a different form at each stage. Select a stage in the map to see how it appears there.',
-        'Investigate moves between artifacts, observations, and the wider environment. Recognize connects observations into patterns and underlying problems. Design considers how an intervention affects other parts of the system. Question surfaces dependencies, assumptions, missing relationships, and consequences. Evaluate tests whether the parts form a coherent whole. Communicate preserves the links between findings, the larger problem, and a response.'
+        'I move between details and the bigger picture. That means I connect observations to underlying problems, and consider how a response may affect other parts of the larger system.'
       ]
     },
     'new-eyes': {
       title: 'Prepare for New Eyes', eyebrow: 'Audience orientation',
       stages: ['design', 'communicate'],
       paragraphs: [
-        'I anticipate how someone unfamiliar with the material will encounter, understand, and use it.',
-        'This orientation shapes how I design resulting material and how I communicate the same underlying work to different audiences. It informs presentation without weakening the function of the underlying requirements.'
+        "I consider how someone unfamiliar with the material will encounter it. Making guidance easier to approach doesn't weaken the requirements."
       ]
     },
     governance: {
       title: 'Governance and risk', eyebrow: 'Decision considerations',
       stages: ['design', 'question', 'evaluate', 'communicate'],
       paragraphs: [
-        'Governance and risk become significant considerations as I design responses to identified problems. Functional consequences help shape what a standard or requirement needs to address.',
-        'These considerations continue through questions about ownership, approval conditions, cutoffs, eligibility, and lifecycle handling; evaluation of reliability and risk; and communication of decisions and implications.'
+        'I consider who needs to own or approve decisions, what risks a requirement addresses, and what could happen if an issue is left unresolved. These questions shape how I design, question, evaluate, and explain a response.'
       ]
     },
     fletcher: {
       title: "Fletcher's role", eyebrow: 'Professional agency · Encompasses the whole system',
       stages,
       paragraphs: [
-        'Accumulated expertise, pattern recognition, interpretation, professional judgment, intellectual ownership, and integration encompass the entire practice.',
-        'Tools, including AI, can support analysis, exploration, and production. I remain responsible for conclusions, recommendations, and decisions, and accept substantive material only when I believe it from my expertise and can defend it from my expertise.'
+        'My experience and judgment connect everything on this map. They help me interpret what I find, decide what it means, and take responsibility for the conclusions and recommendations.'
       ]
     }
   };
@@ -120,34 +102,58 @@
     anchor.stages.forEach((stage) => stageToAnchors[stage].push(id));
   });
 
-  const detailEyebrow = root.querySelector('[data-detail-eyebrow]');
-  const detailTitle = root.querySelector('[data-detail-title]');
-  const detailCopy = root.querySelector('[data-detail-copy]');
+  const popup = root.querySelector('[data-map-popup]');
+  const popupEyebrow = root.querySelector('[data-popup-eyebrow]');
+  const popupTitle = root.querySelector('[data-popup-title]');
+  const popupCopy = root.querySelector('[data-popup-copy]');
+  const popupClose = root.querySelector('[data-popup-close]');
   const resetButton = root.querySelector('[data-map-reset]');
   let activeSelection = null;
+  let activeTrigger = null;
 
-  const setDetail = (item) => {
-    const detail = item === 'overview'
-      ? {
-          eyebrow: 'Overview', title: 'The whole practice',
-          paragraphs: [
-            'The sequence is a way into the work, not a fixed route. Evidence can change how I understand the problem, and questions may lead me back to earlier thinking. Systemic Thinking runs through every stage in a different way; Fletcher’s expertise and judgment encompass the whole.',
-            'Select any stage or influence to explore its role. All connections remain visible in the map.'
-          ]
-        }
-      : stageDetails[item] || anchors[item];
+  const positionPopup = () => {
+    if (popup.hidden || !activeTrigger) return;
+    const canvasRect = canvas.getBoundingClientRect();
+    const triggerRect = activeTrigger.getBoundingClientRect();
+    const popupRect = popup.getBoundingClientRect();
+    const gap = 12;
+    const maxLeft = Math.max(gap, canvas.clientWidth - popupRect.width - gap);
+    const maxTop = Math.max(gap, canvas.clientHeight - popupRect.height - gap);
+    const right = triggerRect.right - canvasRect.left + gap;
+    const left = triggerRect.left - canvasRect.left - popupRect.width - gap;
+    let x = right <= maxLeft ? right : (left >= gap ? left : triggerRect.left - canvasRect.left + (triggerRect.width - popupRect.width) / 2);
+    let y = triggerRect.top - canvasRect.top + (triggerRect.height - popupRect.height) / 2;
+    if (window.matchMedia('(max-width: 680px)').matches) {
+      x = triggerRect.left - canvasRect.left + (triggerRect.width - popupRect.width) / 2;
+      y = triggerRect.bottom - canvasRect.top + gap;
+      if (y > maxTop) y = triggerRect.top - canvasRect.top - popupRect.height - gap;
+    }
+    popup.style.left = `${Math.max(gap, Math.min(x, maxLeft))}px`;
+    popup.style.top = `${Math.max(gap, Math.min(y, maxTop))}px`;
+  };
 
-    detailEyebrow.textContent = detail.eyebrow;
-    detailTitle.textContent = detail.title;
-    detailCopy.replaceChildren(...detail.paragraphs.map((paragraph) => {
+  const setPopup = (item) => {
+    const detail = stageDetails[item] || anchors[item];
+    if (!detail) {
+      popup.hidden = true;
+      return;
+    }
+    popupEyebrow.textContent = detail.eyebrow;
+    popupTitle.textContent = detail.title;
+    popupCopy.replaceChildren(...detail.paragraphs.map((paragraph) => {
       const p = document.createElement('p');
       p.textContent = paragraph;
       return p;
     }));
+    popup.hidden = false;
+    positionPopup();
   };
 
   const drawDiagram = () => {
-    if (window.matchMedia('(max-width: 680px)').matches) return;
+    if (window.matchMedia('(max-width: 680px)').matches) {
+      positionPopup();
+      return;
+    }
     const canvasRect = canvas.getBoundingClientRect();
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
@@ -251,6 +257,7 @@
     });
     root.querySelectorAll('[data-select]').forEach((button) => {
       button.setAttribute('aria-pressed', String(button.dataset.select === item));
+      button.setAttribute('aria-expanded', String(button.dataset.select === item));
     });
     pathLayer.querySelectorAll('[data-connection]').forEach((path) => {
       const id = path.dataset.connection;
@@ -261,14 +268,44 @@
       path.classList.toggle('is-related', isOverview || stageDetails[item] && (path.dataset.from === item || path.dataset.to === item) || item === 'fletcher');
     });
     pathLayer.querySelectorAll('[data-stage]').forEach((path) => path.classList.toggle('is-related', isOverview || relatedStages.includes(path.dataset.stage) || item === 'fletcher'));
-    setDetail(item || 'overview');
+    if (isOverview) {
+      popup.hidden = true;
+      activeTrigger = null;
+    } else {
+      setPopup(item);
+    }
   };
 
   buttons.forEach((button) => button.addEventListener('click', () => {
     const item = button.dataset.select;
-    applySelection(activeSelection === item ? null : item);
+    if (activeSelection === item) {
+      const trigger = activeTrigger;
+      applySelection(null);
+      trigger?.focus();
+      return;
+    }
+    activeTrigger = button;
+    applySelection(item);
+    popupClose.focus();
   }));
   resetButton.addEventListener('click', () => applySelection(null));
+  popupClose.addEventListener('click', () => {
+    const trigger = activeTrigger;
+    applySelection(null);
+    trigger?.focus();
+  });
+  document.addEventListener('pointerdown', (event) => {
+    if (activeSelection && !popup.contains(event.target) && !event.target.closest('[data-select]') && !resetButton.contains(event.target)) {
+      applySelection(null);
+    }
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && activeSelection) {
+      const trigger = activeTrigger;
+      applySelection(null);
+      trigger?.focus();
+    }
+  });
 
   root.classList.add('is-enhanced');
   drawDiagram();
