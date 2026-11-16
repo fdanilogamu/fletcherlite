@@ -1134,6 +1134,13 @@ footer p a:focus-visible {
   min-width: 0;
   padding-top: var(--space-md);
   border-top: 1px solid var(--border);
+  transition: background-color 180ms ease, border-color 180ms ease, padding-inline 180ms ease;
+}
+
+.map-explained-grid article.is-arrival {
+  padding-inline: var(--space-md);
+  border-top-color: var(--primary);
+  background-color: var(--bg-secondary);
 }
 
 .map-explained-grid h4 {
@@ -1153,6 +1160,10 @@ footer p a:focus-visible {
   border-left: 2px solid var(--secondary);
   color: var(--text-tertiary) !important;
   font-size: var(--text-sm) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-explained-grid article { transition: none; }
 }
 
 @media (max-width: 900px) {

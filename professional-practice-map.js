@@ -35,6 +35,7 @@
   let activeSelection = null;
   let activeTrigger = null;
   let suppressFocusPreview = null;
+  let highlightedEntry = null;
 
   const positionPopup = () => {
     if (popup.hidden || !activeTrigger) return;
@@ -86,7 +87,11 @@
 
   const scrollToEntry = (id, { updateHistory = true, focus = true } = {}) => {
     const heading = document.getElementById(id);
-    if (!heading || !heading.closest('[data-map-entry]')) return;
+    const entry = heading?.closest('[data-map-entry]');
+    if (!entry) return;
+    highlightedEntry?.classList.remove('is-arrival');
+    highlightedEntry = entry;
+    highlightedEntry.classList.add('is-arrival');
     explained.open = true;
     if (updateHistory) history.pushState(null, '', `#${heading.id}`);
     requestAnimationFrame(() => {
@@ -287,7 +292,10 @@
   const initialHash = decodeURIComponent(window.location.hash.slice(1));
   if (document.getElementById(initialHash)?.closest('[data-map-entry]')) {
     explained.open = true;
-    requestAnimationFrame(() => document.getElementById(initialHash)?.scrollIntoView({ block: 'start' }));
+    const initialHeading = document.getElementById(initialHash);
+    highlightedEntry = initialHeading.closest('[data-map-entry]');
+    highlightedEntry.classList.add('is-arrival');
+    requestAnimationFrame(() => initialHeading.scrollIntoView({ block: 'start' }));
   }
   if ('ResizeObserver' in window) new ResizeObserver(drawDiagram).observe(canvas);
   window.addEventListener('resize', drawDiagram, { passive: true });
