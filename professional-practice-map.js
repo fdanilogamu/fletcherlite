@@ -161,9 +161,10 @@
     boundary.setAttribute('y', '8');
     boundary.setAttribute('width', String(Math.max(width - 16, 0)));
     boundary.setAttribute('height', String(Math.max(height - 16, 0)));
-    const gridRect = root.querySelector('.map-blueprint-grid');
-    gridRect.setAttribute('width', String(width));
-    gridRect.setAttribute('height', String(height));
+    root.querySelectorAll('.map-blueprint-grid').forEach((gridRect) => {
+      gridRect.setAttribute('width', String(width));
+      gridRect.setAttribute('height', String(height));
+    });
 
     const stageButtons = Object.fromEntries(stages.map((id) => [id, root.querySelector(`[data-select="${id}"]`)]));
     const anchorButtons = Object.fromEntries(Object.keys(anchors).filter((id) => id !== 'fletcher').map((id) => [id, root.querySelector(`[data-select="${id}"]`)]));
@@ -199,16 +200,28 @@
     pathLayer.querySelectorAll('[data-generated="true"], .map-connection:not([data-generated]), .map-sequence-path:not([data-generated])').forEach((path) => path.remove());
     junctionLayer.replaceChildren();
 
-    // Stage sequence and explicit iteration cue.
-    stages.slice(0, -1).forEach((id, index) => {
-      const next = stages[index + 1];
-      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('class', 'map-sequence-path');
-      path.dataset.generated = 'true';
-      path.dataset.from = id;
-      path.dataset.to = next;
-      path.setAttribute('d', `M ${points[id].x} ${points[id].y} V ${points[next].y}`);
-      pathLayer.append(path);
+    // Keep the sequence rail outside the stage text, with a small leader to each stage.
+    const firstStageRect = stageButtons[stages[0]].getBoundingClientRect();
+    const railX = firstStageRect.left - canvasRect.left - 10;
+    stages.forEach((id, index) => {
+      const stageRect = stageButtons[id].getBoundingClientRect();
+      const stageLeft = stageRect.left - canvasRect.left;
+      const tick = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      tick.setAttribute('class', 'map-sequence-path');
+      tick.dataset.generated = 'true';
+      tick.dataset.stage = id;
+      tick.setAttribute('d', `M ${railX} ${points[id].y} H ${stageLeft}`);
+      pathLayer.append(tick);
+      if (index < stages.length - 1) {
+        const next = stages[index + 1];
+        const segment = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        segment.setAttribute('class', 'map-sequence-path');
+        segment.dataset.generated = 'true';
+        segment.dataset.from = id;
+        segment.dataset.to = next;
+        segment.setAttribute('d', `M ${railX} ${points[id].y} V ${points[next].y}`);
+        pathLayer.append(segment);
+      }
     });
 
     Object.entries(anchors).forEach(([id, anchor]) => {
@@ -220,13 +233,6 @@
       });
     });
 
-    // Iterative return cue: a small, non-directional loop beside the narrative spine.
-    const loop = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    loop.setAttribute('class', 'map-iteration-path');
-    loop.setAttribute('d', `M ${points.communicate.x - 14} ${points.communicate.y} C ${points.communicate.x - 88} ${points.communicate.y + 28}, ${points.investigate.x - 88} ${points.investigate.y - 28}, ${points.investigate.x - 14} ${points.investigate.y}`);
-    loop.setAttribute('data-iteration', 'true');
-    loop.dataset.generated = 'true';
-    pathLayer.append(loop);
   };
 
   const applySelection = (item) => {
@@ -254,7 +260,7 @@
     pathLayer.querySelectorAll('[data-from][data-to]').forEach((path) => {
       path.classList.toggle('is-related', isOverview || stageDetails[item] && (path.dataset.from === item || path.dataset.to === item) || item === 'fletcher');
     });
-    pathLayer.querySelectorAll('[data-iteration]').forEach((path) => path.classList.toggle('is-related', isOverview || item === 'fletcher'));
+    pathLayer.querySelectorAll('[data-stage]').forEach((path) => path.classList.toggle('is-related', isOverview || relatedStages.includes(path.dataset.stage) || item === 'fletcher'));
     setDetail(item || 'overview');
   };
 

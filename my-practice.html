@@ -40,20 +40,24 @@
     <div class="practice-map-canvas" data-map-canvas>
       <svg class="practice-map-svg" data-map-svg viewBox="0 0 1200 900" preserveAspectRatio="none" role="img" aria-labelledby="map-svg-title map-svg-desc">
         <title id="map-svg-title">Connections in Fletcher's knowledge systems practice</title>
-        <desc id="map-svg-desc">Six stages run down the center. Anchors connect to the stages they influence. Systemic Thinking spans all stages, and Fletcher's role encompasses the complete map. The relationship list below gives the same information in text.</desc>
+        <desc id="map-svg-desc">The central narrative runs from Investigate through Recognize, Design, Question, Evaluate, and Communicate. A solid vertical line marks that approximate sequence. AI involvement connects to Recognize, Design, Question, Evaluate, and Communicate; its substantial connections are thicker. Record-keeping connects to Investigate, Recognize, Evaluate, and Communicate. Systemic Thinking spans all six stages. Prepare for New Eyes connects to Design and Communicate. Governance and risk connects to Design, Question, Evaluate, and Communicate. Fletcher's role is the outer boundary around the complete practice.</desc>
         <defs>
           <pattern id="map-grid" width="24" height="24" patternUnits="userSpaceOnUse">
             <path d="M 24 0 L 0 0 0 24" class="map-grid-line" fill="none" stroke-width="0.65" />
           </pattern>
+          <pattern id="map-major-grid" width="120" height="120" patternUnits="userSpaceOnUse">
+            <path d="M 120 0 L 0 0 0 120" class="map-grid-major-line" fill="none" stroke-width="0.9" />
+          </pattern>
         </defs>
-        <rect class="map-blueprint-grid" width="1200" height="900" fill="url(#map-grid)" />
+        <rect class="map-blueprint-grid map-blueprint-grid--fine" width="1200" height="900" fill="url(#map-grid)" />
+        <rect class="map-blueprint-grid map-blueprint-grid--major" width="1200" height="900" fill="url(#map-major-grid)" />
         <g class="map-boundary" data-map-boundary aria-hidden="true"><rect x="8" y="8" width="1184" height="884" rx="2" /></g>
         <g class="map-paths" data-map-paths aria-hidden="true">
-          <path class="map-sequence-path" d="M600 115 V785" />
+          <path class="map-sequence-path" d="M278 115 V785 M278 115 H300 M278 249 H300 M278 383 H300 M278 517 H300 M278 651 H300 M278 785 H300" />
           <path class="map-connection map-connection--systemic" data-connection="systemic" d="M1030 450 H900 M900 115 V785 M900 115 H760 M900 249 H760 M900 383 H760 M900 517 H760 M900 651 H760 M900 785 H760" />
           <path class="map-connection map-connection--substantial" data-connection="ai" d="M175 249 H420 V383 H480 M420 249 V517 H480" />
           <path class="map-connection map-connection--supporting" data-connection="ai" d="M420 249 H480 M420 651 H480 M420 785 H480" />
-          <path class="map-connection map-connection--record" data-connection="records" d="M175 383 H335 V115 H480 M335 383 H480 M335 651 H480 M335 785 H480" />
+          <path class="map-connection map-connection--records" data-connection="records" d="M175 383 H335 V115 H480 M335 383 H480 M335 651 H480 M335 785 H480" />
           <path class="map-connection map-connection--orientation" data-connection="new-eyes" d="M1025 450 H850 V383 H760 M850 450 V785 H760" />
           <path class="map-connection map-connection--governance" data-connection="governance" d="M1025 650 H820 V383 H760 M820 517 H760 M820 651 H760 M820 785 H760" />
         </g>
@@ -63,28 +67,28 @@
       <div class="map-fletcher-label"><button class="map-fletcher-control" type="button" data-select="fletcher" aria-pressed="false" aria-controls="map-detail">Fletcher's role</button><span>Professional judgment · expertise · ownership · integration</span></div>
 
       <div class="map-anchor map-anchor--ai" data-map-item="ai">
-        <button class="map-anchor-button" type="button" data-select="ai" aria-pressed="false" aria-controls="map-detail">
-          <span class="map-anchor-kind">Working relationship</span><span class="map-anchor-name">AI involvement</span><span class="map-anchor-note">Substantial at Design and Question</span>
+        <button class="map-anchor-button" type="button" data-select="ai" aria-label="AI involvement. Connected to Recognize, Design, Question, Evaluate, and Communicate." aria-pressed="false" aria-controls="map-detail">
+          <span class="map-anchor-kind">Working relationship</span><span class="map-anchor-name">AI involvement</span><span class="map-anchor-note">Substantial at Design and Question</span><span class="map-anchor-stages">STAGES / 02 · 03 · 04 · 05 · 06</span>
         </button>
       </div>
       <div class="map-anchor map-anchor--records" data-map-item="records">
-        <button class="map-anchor-button" type="button" data-select="records" aria-pressed="false" aria-controls="map-detail">
-          <span class="map-anchor-kind">Ongoing practice</span><span class="map-anchor-name">Record-keeping</span><span class="map-anchor-note">Evidence, activity, and broader patterns</span>
+        <button class="map-anchor-button" type="button" data-select="records" aria-label="Record-keeping. Connected to Investigate, Recognize, Evaluate, and Communicate." aria-pressed="false" aria-controls="map-detail">
+          <span class="map-anchor-kind">Ongoing practice</span><span class="map-anchor-name">Record-keeping</span><span class="map-anchor-note">Evidence, activity, and broader patterns</span><span class="map-anchor-stages">STAGES / 01 · 02 · 05 · 06</span>
         </button>
       </div>
       <div class="map-anchor map-anchor--systemic" data-map-item="systemic">
-        <button class="map-anchor-button" type="button" data-select="systemic" aria-pressed="false" aria-controls="map-detail">
-          <span class="map-anchor-kind">Way of understanding</span><span class="map-anchor-name">Systemic Thinking</span><span class="map-anchor-note">A different expression at every stage</span>
+        <button class="map-anchor-button" type="button" data-select="systemic" aria-label="Systemic Thinking. Connected to all six stages, with a different expression at each." aria-pressed="false" aria-controls="map-detail">
+          <span class="map-anchor-kind">Way of understanding</span><span class="map-anchor-name">Systemic Thinking</span><span class="map-anchor-note">A different expression at every stage</span><span class="map-anchor-stages">STAGES / 01 · 02 · 03 · 04 · 05 · 06</span>
         </button>
       </div>
       <div class="map-anchor map-anchor--new-eyes" data-map-item="new-eyes">
-        <button class="map-anchor-button" type="button" data-select="new-eyes" aria-pressed="false" aria-controls="map-detail">
-          <span class="map-anchor-kind">Audience orientation</span><span class="map-anchor-name">Prepare for New Eyes</span><span class="map-anchor-note">Design and communication</span>
+        <button class="map-anchor-button" type="button" data-select="new-eyes" aria-label="Prepare for New Eyes. Connected to Design and Communicate." aria-pressed="false" aria-controls="map-detail">
+          <span class="map-anchor-kind">Audience orientation</span><span class="map-anchor-name">Prepare for New Eyes</span><span class="map-anchor-note">Design and communication</span><span class="map-anchor-stages">STAGES / 03 · 06</span>
         </button>
       </div>
       <div class="map-anchor map-anchor--governance" data-map-item="governance">
-        <button class="map-anchor-button" type="button" data-select="governance" aria-pressed="false" aria-controls="map-detail">
-          <span class="map-anchor-kind">Decision considerations</span><span class="map-anchor-name">Governance and risk</span><span class="map-anchor-note">Shapes responses and their implications</span>
+        <button class="map-anchor-button" type="button" data-select="governance" aria-label="Governance and risk. Connected to Design, Question, Evaluate, and Communicate." aria-pressed="false" aria-controls="map-detail">
+          <span class="map-anchor-kind">Decision considerations</span><span class="map-anchor-name">Governance and risk</span><span class="map-anchor-note">Shapes responses and their implications</span><span class="map-anchor-stages">STAGES / 03 · 04 · 05 · 06</span>
         </button>
       </div>
 
@@ -110,11 +114,14 @@
       </ol>
     </div>
 
-    <div class="map-legend" aria-label="Relationship line legend">
-      <span><i class="map-legend-line map-legend-line--primary" aria-hidden="true"></i>Substantial AI involvement</span>
-      <span><i class="map-legend-line map-legend-line--support" aria-hidden="true"></i>Supporting AI involvement</span>
-      <span><i class="map-legend-line map-legend-line--systemic" aria-hidden="true"></i>Systemic Thinking across stages</span>
-      <span><i class="map-legend-line map-legend-line--other" aria-hidden="true"></i>Other meaningful connections</span>
+    <div class="map-legend" aria-label="Map line key">
+      <span><i class="map-legend-line map-legend-line--sequence" aria-hidden="true"></i>Stage sequence</span>
+      <span><i class="map-legend-line map-legend-line--primary" aria-hidden="true"></i>AI · substantial</span>
+      <span><i class="map-legend-line map-legend-line--support" aria-hidden="true"></i>AI · supporting</span>
+      <span><i class="map-legend-line map-legend-line--records" aria-hidden="true"></i>Record-keeping</span>
+      <span><i class="map-legend-line map-legend-line--systemic" aria-hidden="true"></i>Systemic Thinking</span>
+      <span><i class="map-legend-line map-legend-line--orientation" aria-hidden="true"></i>Prepare for New Eyes</span>
+      <span><i class="map-legend-line map-legend-line--governance" aria-hidden="true"></i>Governance and risk</span>
     </div>
 
     <div class="map-detail" id="map-detail" aria-labelledby="map-detail-title" aria-live="polite" aria-atomic="true">
@@ -122,18 +129,6 @@
       <h3 id="map-detail-title" data-detail-title>The whole practice</h3>
       <div class="map-detail-copy" data-detail-copy><p>The sequence is a way into the work, not a fixed route. Evidence can change how I understand the problem, and questions may lead me back to earlier thinking. Systemic Thinking runs through every stage in a different way; Fletcher's expertise and judgment encompass the whole.</p><p>Select any stage or influence to explore its role. All connections remain visible in the map.</p></div>
     </div>
-
-    <details class="map-relationships">
-      <summary>Read the relationships as text</summary>
-      <ul>
-        <li><strong>AI involvement:</strong> Recognize (supporting), Design (substantial), Question (substantial), Evaluate (supporting), Communicate (supporting).</li>
-        <li><strong>Record-keeping:</strong> Investigate, Recognize, Evaluate, Communicate.</li>
-        <li><strong>Systemic Thinking:</strong> All six stages, expressed differently at each.</li>
-        <li><strong>Prepare for New Eyes:</strong> Design, Communicate.</li>
-        <li><strong>Governance and risk:</strong> Design, Question, Evaluate, Communicate.</li>
-        <li><strong>Fletcher's role:</strong> Encompasses and integrates the entire system.</li>
-      </ul>
-    </details>
 
     <div class="map-content-fallback" data-map-fallback>
       <h3>Explore the practice</h3>
