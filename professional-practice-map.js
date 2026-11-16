@@ -34,6 +34,7 @@
   const explainedContent = document.querySelector('.map-explained-content');
   let activeSelection = null;
   let activeTrigger = null;
+  let suppressFocusPreview = null;
 
   const positionPopup = () => {
     if (popup.hidden || !activeTrigger) return;
@@ -77,7 +78,10 @@
     popup.hidden = true;
     activeTrigger = null;
     buttons.forEach((button) => button.setAttribute('aria-expanded', 'false'));
-    if (returnFocus) trigger?.focus();
+    if (returnFocus && trigger) {
+      suppressFocusPreview = trigger;
+      trigger.focus();
+    }
   };
 
   const scrollToEntry = (id, { updateHistory = true, focus = true } = {}) => {
@@ -196,68 +200,95 @@
     root.dataset.selection = item || 'overview';
     resetButton.setAttribute('aria-pressed', String(isOverview));
 
-    const relatedStages = isOverview ? stages : (stageDetails[item] ? [item] : (anchors[item]?.stages || stages));
+    const isStage = stages.includes(item);
+    const relatedStages = isOverview ? stages : (isStage ? [item] : (anchors[item]?.stages || stages));
     const relatedAnchors = isOverview || item === 'fletcher' ? Object.keys(anchors).filter((id) => id !== 'fletcher') :
-      stageDetails[item] ? stageToAnchors[item] : [item];
+      isStage ? stageToAnchors[item] : [item];
     root.querySelectorAll('[data-map-item]').forEach((element) => {
       const id = element.dataset.mapItem;
       element.classList.toggle('is-related', isOverview || relatedStages.includes(id) || relatedAnchors.includes(id));
     });
     root.querySelectorAll('[data-select]').forEach((button) => {
       button.setAttribute('aria-pressed', String(button.dataset.select === item));
-      button.setAttribute('aria-expanded', String(button.dataset.select === item));
+      button.setAttribute('aria-expanded', 'false');
     });
     pathLayer.querySelectorAll('[data-connection]').forEach((path) => {
       const id = path.dataset.connection;
-      const matches = isOverview || (stageDetails[item] ? id === item || relatedAnchors.includes(id) : id === item || (item === 'fletcher'));
+      const matches = isOverview || (isStage ? relatedAnchors.includes(id) : id === item || item === 'fletcher');
       path.classList.toggle('is-related', matches);
     });
     pathLayer.querySelectorAll('[data-from][data-to]').forEach((path) => {
-      path.classList.toggle('is-related', isOverview || stageDetails[item] && (path.dataset.from === item || path.dataset.to === item) || item === 'fletcher');
+      path.classList.toggle('is-related', isOverview || isStage && (path.dataset.from === item || path.dataset.to === item) || item === 'fletcher');
     });
     pathLayer.querySelectorAll('[data-stage]').forEach((path) => path.classList.toggle('is-related', isOverview || relatedStages.includes(path.dataset.stage) || item === 'fletcher'));
-    if (isOverview) {
-      popup.hidden = true;
-      activeTrigger = null;
-    } else {
-      setPopup(item);
-    }
+    closePopup();
   };
 
-  buttons.forEach((button) => button.addEventListener('click', () => {
-    const item = button.dataset.select;
-    if (activeSelection === item) {
-      const trigger = activeTrigger;
-      applySelection(null);
-      trigger?.focus();
+  buttons.forEach((button) => {
+    const showPreview = () => {
+      if (suppressFocusPreview === button) {
+        suppressFocusPreview = null;
+        return;
+      }
+      activeTrigger = button;
+      button.setAttribute('aria-expanded', 'true');
+      setPopup(button.dataset.select);
+    };
+    button.addEventListener('pointerenter', showPreview);
+    button.addEventListener('focus', showPreview);
+    button.addEventListener('pointerleave', (event) => {
+      if (!popup.contains(event.relatedTarget) && document.activeElement !== button) closePopup();
+    });
+    button.addEventListener('blur', (event) => {
+      if (!popup.contains(event.relatedTarget)) closePopup();
+    });
+    button.addEventListener('click', () => {
+      const item = button.dataset.select;
+      applySelection(item);
+      scrollToEntry(item);
+    });
+  });
+  resetButton.addEventListener('click', () => applySelection(null));
+  popupClose.addEventListener('click', () => closePopup({ returnFocus: true }));
+  popupEntryLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    const item = activeTrigger?.dataset.select || activeSelection;
+    closePopup();
+    if (item) scrollToEntry(item);
+  });
+  popup.addEventListener('pointerleave', (event) => {
+    if (!activeTrigger || document.activeElement === activeTrigger || activeTrigger.contains(event.relatedTarget)) return;
+    closePopup();
+  });
+  explainedContent.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    const id = decodeURIComponent(link.getAttribute('href').slice(1));
+    if (link.hasAttribute('data-map-return')) {
+      event.preventDefault();
+      scrollToMap();
       return;
     }
-    activeTrigger = button;
-    applySelection(item);
-    popupClose.focus();
-  }));
-  resetButton.addEventListener('click', () => applySelection(null));
-  popupClose.addEventListener('click', () => {
-    const trigger = activeTrigger;
-    applySelection(null);
-    trigger?.focus();
+    if (document.getElementById(id)?.closest('[data-map-entry]')) {
+      event.preventDefault();
+      scrollToEntry(id);
+    }
   });
   document.addEventListener('pointerdown', (event) => {
-    if (activeSelection && !popup.contains(event.target) && !event.target.closest('[data-select]') && !resetButton.contains(event.target)) {
-      applySelection(null);
-    }
+    if (!popup.hidden && !popup.contains(event.target) && !event.target.closest('[data-select]')) closePopup();
   });
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && activeSelection) {
-      const trigger = activeTrigger;
-      applySelection(null);
-      trigger?.focus();
-    }
+    if (event.key === 'Escape' && !popup.hidden) closePopup({ returnFocus: true });
   });
 
   root.classList.add('is-enhanced');
   drawDiagram();
   applySelection(null);
+  const initialHash = decodeURIComponent(window.location.hash.slice(1));
+  if (document.getElementById(initialHash)?.closest('[data-map-entry]')) {
+    explained.open = true;
+    requestAnimationFrame(() => document.getElementById(initialHash)?.scrollIntoView({ block: 'start' }));
+  }
   if ('ResizeObserver' in window) new ResizeObserver(drawDiagram).observe(canvas);
   window.addEventListener('resize', drawDiagram, { passive: true });
 })();
