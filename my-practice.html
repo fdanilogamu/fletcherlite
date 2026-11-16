@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Practice - Fletcher Galeano</title>
+  <meta name="description" content="An interactive map of how Fletcher Galeano investigates, interprets, designs, questions, evaluates, and communicates knowledge systems work.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="about my-practice-page">
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">Fletcher Galeano</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="my-practice.html" aria-current="page">My Practice</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <section class="container">
+      <p class="practice-map-backlink"><a href="about.html">← About Fletcher</a></p>
+      <section class="practice-map-section" aria-labelledby="practice-map-title">
+  <div class="practice-map-intro">
+    <p class="practice-map-kicker">A map of the practice</p>
+    <h2 id="practice-map-title">How I build knowledge systems</h2>
+    <p>I move between evidence, patterns, problems, and responses. The stages suggest a way into the work, not a fixed sequence: new evidence and questions can change what came before. The surrounding influences shape the work in different ways; professional judgment connects and holds the whole.</p>
+  </div>
+
+  <div class="practice-map" data-practice-map>
+    <div class="practice-map-toolbar">
+      <p class="practice-map-sequence-note"><span aria-hidden="true">01—06</span> Suggested narrative sequence · iterative in practice</p>
+      <button class="practice-map-reset" type="button" data-map-reset aria-pressed="true">Overview</button>
+    </div>
+
+    <div class="practice-map-canvas" data-map-canvas>
+      <svg class="practice-map-svg" data-map-svg viewBox="0 0 1200 900" preserveAspectRatio="none" role="img" aria-labelledby="map-svg-title map-svg-desc">
+        <title id="map-svg-title">Connections in Fletcher's knowledge systems practice</title>
+        <desc id="map-svg-desc">Six stages run down the center. Anchors connect to the stages they influence. Systemic Thinking spans all stages, and Fletcher's role encompasses the complete map. The relationship list below gives the same information in text.</desc>
+        <defs>
+          <pattern id="map-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+            <path d="M 24 0 L 0 0 0 24" class="map-grid-line" fill="none" stroke-width="0.65" />
+          </pattern>
+        </defs>
+        <rect class="map-blueprint-grid" width="1200" height="900" fill="url(#map-grid)" />
+        <g class="map-boundary" data-map-boundary aria-hidden="true"><rect x="8" y="8" width="1184" height="884" rx="2" /></g>
+        <g class="map-paths" data-map-paths aria-hidden="true">
+          <path class="map-sequence-path" d="M600 115 V785" />
+          <path class="map-connection map-connection--systemic" data-connection="systemic" d="M1030 450 H900 M900 115 V785 M900 115 H760 M900 249 H760 M900 383 H760 M900 517 H760 M900 651 H760 M900 785 H760" />
+          <path class="map-connection map-connection--substantial" data-connection="ai" d="M175 249 H420 V383 H480 M420 249 V517 H480" />
+          <path class="map-connection map-connection--supporting" data-connection="ai" d="M420 249 H480 M420 651 H480 M420 785 H480" />
+          <path class="map-connection map-connection--record" data-connection="records" d="M175 383 H335 V115 H480 M335 383 H480 M335 651 H480 M335 785 H480" />
+          <path class="map-connection map-connection--orientation" data-connection="new-eyes" d="M1025 450 H850 V383 H760 M850 450 V785 H760" />
+          <path class="map-connection map-connection--governance" data-connection="governance" d="M1025 650 H820 V383 H760 M820 517 H760 M820 651 H760 M820 785 H760" />
+        </g>
+        <g class="map-junctions" data-map-junctions aria-hidden="true"></g>
+      </svg>
+
+      <div class="map-fletcher-label"><button class="map-fletcher-control" type="button" data-select="fletcher" aria-pressed="false" aria-controls="map-detail">Fletcher's role</button><span>Professional judgment · expertise · ownership · integration</span></div>
+
+      <div class="map-anchor map-anchor--ai" data-map-item="ai">
+        <button class="map-anchor-button" type="button" data-select="ai" aria-pressed="false" aria-controls="map-detail">
+          <span class="map-anchor-kind">Working relationship</span><span class="map-anchor-name">AI involvement</span><span class="map-anchor-note">Substantial at Design and Question</span>
+        </button>
+      </div>
+      <div class="map-anchor map-anchor--records" data-map-item="records">
+        <button class="map-anchor-button" type="button" data-select="records" aria-pressed="false" aria-controls="map-detail">
+          <span class="map-anchor-kind">Ongoing practice</span><span class="map-anchor-name">Record-keeping</span><span class="map-anchor-note">Evidence, activity, and broader patterns</span>
+        </button>
+      </div>
+      <div class="map-anchor map-anchor--systemic" data-map-item="systemic">
+        <button class="map-anchor-button" type="button" data-select="systemic" aria-pressed="false" aria-controls="map-detail">
+          <span class="map-anchor-kind">Way of understanding</span><span class="map-anchor-name">Systemic Thinking</span><span class="map-anchor-note">A different expression at every stage</span>
+        </button>
+      </div>
+      <div class="map-anchor map-anchor--new-eyes" data-map-item="new-eyes">
+        <button class="map-anchor-button" type="button" data-select="new-eyes" aria-pressed="false" aria-controls="map-detail">
+          <span class="map-anchor-kind">Audience orientation</span><span class="map-anchor-name">Prepare for New Eyes</span><span class="map-anchor-note">Design and communication</span>
+        </button>
+      </div>
+      <div class="map-anchor map-anchor--governance" data-map-item="governance">
+        <button class="map-anchor-button" type="button" data-select="governance" aria-pressed="false" aria-controls="map-detail">
+          <span class="map-anchor-kind">Decision considerations</span><span class="map-anchor-name">Governance and risk</span><span class="map-anchor-note">Shapes responses and their implications</span>
+        </button>
+      </div>
+
+      <ol class="map-stages" aria-label="Central narrative stages">
+        <li class="map-stage" data-map-item="investigate">
+          <button class="map-stage-button" type="button" data-select="investigate" aria-pressed="false" aria-controls="map-detail"><span class="map-stage-number">01</span><span class="map-stage-copy"><span class="map-stage-title">Investigate</span><span class="map-stage-summary">Start with what exists; let evidence shape the problem.</span></span><span class="map-stage-mark" aria-hidden="true"></span></button>
+        </li>
+        <li class="map-stage" data-map-item="recognize">
+          <button class="map-stage-button" type="button" data-select="recognize" aria-pressed="false" aria-controls="map-detail"><span class="map-stage-number">02</span><span class="map-stage-copy"><span class="map-stage-title">Recognize</span><span class="map-stage-summary">Connect observations into patterns and test what they may mean.</span></span><span class="map-stage-mark" aria-hidden="true"></span></button>
+        </li>
+        <li class="map-stage" data-map-item="design">
+          <button class="map-stage-button" type="button" data-select="design" aria-pressed="false" aria-controls="map-detail"><span class="map-stage-number">03</span><span class="map-stage-copy"><span class="map-stage-title">Design</span><span class="map-stage-summary">Shape responses around the problem and its consequences.</span></span><span class="map-stage-mark" aria-hidden="true"></span></button>
+        </li>
+        <li class="map-stage" data-map-item="question">
+          <button class="map-stage-button" type="button" data-select="question" aria-pressed="false" aria-controls="map-detail"><span class="map-stage-number">04</span><span class="map-stage-copy"><span class="map-stage-title">Question</span><span class="map-stage-summary">Surface assumptions, decisions, dependencies, and gaps.</span></span><span class="map-stage-mark" aria-hidden="true"></span></button>
+        </li>
+        <li class="map-stage" data-map-item="evaluate">
+          <button class="map-stage-button" type="button" data-select="evaluate" aria-pressed="false" aria-controls="map-detail"><span class="map-stage-number">05</span><span class="map-stage-copy"><span class="map-stage-title">Evaluate</span><span class="map-stage-summary">Test whether the reasoning and response hold together.</span></span><span class="map-stage-mark" aria-hidden="true"></span></button>
+        </li>
+        <li class="map-stage" data-map-item="communicate">
+          <button class="map-stage-button" type="button" data-select="communicate" aria-pressed="false" aria-controls="map-detail"><span class="map-stage-number">06</span><span class="map-stage-copy"><span class="map-stage-title">Communicate</span><span class="map-stage-summary">Make the relationship between evidence and response understandable.</span></span><span class="map-stage-mark" aria-hidden="true"></span></button>
+        </li>
+      </ol>
+    </div>
+
+    <div class="map-legend" aria-label="Relationship line legend">
+      <span><i class="map-legend-line map-legend-line--primary" aria-hidden="true"></i>Substantial AI involvement</span>
+      <span><i class="map-legend-line map-legend-line--support" aria-hidden="true"></i>Supporting AI involvement</span>
+      <span><i class="map-legend-line map-legend-line--systemic" aria-hidden="true"></i>Systemic Thinking across stages</span>
+      <span><i class="map-legend-line map-legend-line--other" aria-hidden="true"></i>Other meaningful connections</span>
+    </div>
+
+    <div class="map-detail" id="map-detail" aria-labelledby="map-detail-title" aria-live="polite" aria-atomic="true">
+      <p class="map-detail-eyebrow" data-detail-eyebrow>Overview</p>
+      <h3 id="map-detail-title" data-detail-title>The whole practice</h3>
+      <div class="map-detail-copy" data-detail-copy><p>The sequence is a way into the work, not a fixed route. Evidence can change how I understand the problem, and questions may lead me back to earlier thinking. Systemic Thinking runs through every stage in a different way; Fletcher's expertise and judgment encompass the whole.</p><p>Select any stage or influence to explore its role. All connections remain visible in the map.</p></div>
+    </div>
+
+    <details class="map-relationships">
+      <summary>Read the relationships as text</summary>
+      <ul>
+        <li><strong>AI involvement:</strong> Recognize (supporting), Design (substantial), Question (substantial), Evaluate (supporting), Communicate (supporting).</li>
+        <li><strong>Record-keeping:</strong> Investigate, Recognize, Evaluate, Communicate.</li>
+        <li><strong>Systemic Thinking:</strong> All six stages, expressed differently at each.</li>
+        <li><strong>Prepare for New Eyes:</strong> Design, Communicate.</li>
+        <li><strong>Governance and risk:</strong> Design, Question, Evaluate, Communicate.</li>
+        <li><strong>Fletcher's role:</strong> Encompasses and integrates the entire system.</li>
+      </ul>
+    </details>
+
+    <div class="map-content-fallback" data-map-fallback>
+      <h3>Explore the practice</h3>
+      <p>Each description remains available here if interactive selection is unavailable.</p>
+      <div class="map-fallback-grid">
+        <article><h4>Investigate</h4><p>I examine available material and its context. Inventories, source references, repository information, usage, and update indicators can help me decide what deserves closer attention. I may inspect a representative sample in depth, looking at references, links and images, sequence, repository fit, formatting, and procedural completeness.</p><p>My judgment matters in deciding what to inspect, how deeply, and what evidence is relevant. Comparison material can provide context without automatically serving as a benchmark. <em>For example, a procedure that appears complete at first may reveal missing prerequisites or implicit steps on closer reading.</em></p></article>
+        <article><h4>Recognize</h4><p>I distinguish isolated defects from recurring issues and move between artifact-level observations and broader explanations. An interpretation is a hypothesis: evidence can change it, and a plausible explanation still needs to be examined.</p><p>My judgment matters in deciding whether observations share an underlying cause and whether that explanation is supported. AI can assist with pattern extraction and problem articulation; it does not settle the conclusion. <em>Several different gaps may point to a common problem, but the pattern needs checking against source material.</em></p></article>
+        <article><h4>Design</h4><p>I consider whether an established practice addresses the issue, what can be adapted, or whether a different standard is needed. I weigh consequences for human comprehension, AI ingestion and retrieval, and operational reliability.</p><p>Requirements address failures that materially compromise function, reliability, or usability; recommendations offer meaningful improvements without making their absence a fundamental failure. My judgment matters in weighing consequences and deciding what is essential.</p></article>
+        <article><h4>Question</h4><p>Iterative questioning can surface decisions not yet formalized, such as ownership, approval conditions, timelines, or lifecycle handling. Reading can expose a missing connection; I identify the question that would bridge it and determine whether I can answer it from my expertise.</p><p>My judgment matters in deciding what can responsibly be resolved and what remains unsupported. <em>If a description depends on an unstated approval condition, identifying that missing decision may change what the material needs to explain.</em></p></article>
+        <article><h4>Evaluate</h4><p>I check whether evidence supports the interpretation, requirements reflect functional consequences, and explanations include necessary dependencies. Comprehension can signal a structural gap. Substantive claims must be ones I believe from my expertise and can defend from my expertise.</p><p>My judgment matters in deciding what is coherent and defensible, and what needs more investigation, revision, or removal. Evaluation is not just checking whether an activity is finished.</p></article>
+        <article><h4>Communicate</h4><p>I connect investigation, findings, underlying problems, proposed interventions, and the reasons they matter. Different audiences may need different representations of the same work: authoritative technical material and decision-oriented explanation serve different purposes.</p><p>My judgment matters in choosing what an audience needs to understand without losing the connection to evidence. AI can assist with language and simpler representations while professional ownership remains mine.</p></article>
+        <article><h4>AI involvement</h4><p>AI can assist with pattern extraction, problem articulation, questioning, exploring approaches, language refinement, production, simpler representations, and executive-facing presentations. Its contribution varies by activity and its output remains subject to professional review.</p></article>
+        <article><h4>Fletcher's role</h4><p>Accumulated expertise, pattern recognition, interpretation, judgment, intellectual ownership, and integration encompass the practice. This is what makes the activity professionally directed and defensible.</p></article>
+        <article><h4>Record-keeping</h4><p>Recording observations and source information as work progresses, maintaining a continuous daily log, and periodically reviewing or aggregating records makes both specific activity and broader patterns visible.</p></article>
+        <article><h4>Systemic Thinking</h4><p>I move between artifacts and environment, connect observations into patterns, consider how interventions affect other parts of a system, surface dependencies, test coherence, and preserve the relationship between findings, problems, and responses.</p></article>
+        <article><h4>Prepare for New Eyes</h4><p>I anticipate how people unfamiliar with the material will encounter, understand, and use it. This shapes material design and communication to different audiences.</p></article>
+        <article><h4>Governance and risk</h4><p>Risk and governance considerations shape designed responses, questions about ownership or approval, evaluation of functional consequences, and communication of decisions and implications.</p></article>
+      </div>
+    </div>
+  </div>
+</section>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2026 Fletcher Galeano. Built with <a href="https://github.com/fdanilogamu/fletcherlite">Git</a> and Grit.</p>
+  </footer>
+  <script src="professional-practice-map.js" defer></script>
+</body>
+</html>
